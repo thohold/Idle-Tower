@@ -1,4 +1,4 @@
-# Idle Tower - Unity C# Prototype
+### Idle Tower - Unity C# Prototype
 
 ## Concept
 
@@ -48,15 +48,15 @@ Once a enemy is killed it drops coins and xp, that in turn can be used to buy mo
 
 ## ⌨️ Code
 
-# Cards
+### Cards
 
 I used abstraction and scriptable objects to make new cards easy to implement. The upgradecards have a simple overridable ApplyUpgrade() function, that can be tweaked to fit new game logic. Later i plan to add more abstraction, so all cards are uniform
 
-# Tower behavior
+### Tower behavior
 
 By using switch statements combined with enums i can alter what code that runs depending on the setting the tower is set to. Even though towers have different behaviors they can share stats like: Attack speed, Damage, Size, Range, and more. Using scriptable objects in unity, you can tweak the upgrades while still keeping the same behavior per tower.
 
-# Enemy behavior
+### Enemy behavior
 
 Enemy behavior is very barebones at this point, with no search algorithms or similar for their pathfidning. Their pathfinding consist of finding a random point in a grid, using a boxcollider, then running to it. Once a enemy reaches its destination it simply finds a new spot using random values within the width of a box collider and repeats.
 
