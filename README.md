@@ -2,7 +2,7 @@
 
 ## Concept
 
-My idea was to make a idle game, but one that is more interactive, and te progression feels smooth. Player start with a simple tower, and a enemies spawning into the arena at a slow phase. As the tower kills more and more enemies, the player can add more towers, upgrade the existing ones, and increase the rate of which enemies spawn and the loot that is yielded
+My idea was to make a idle game, but one that is more interactive with smooth, satisfying progression. Player start with a simple tower, and a enemies spawning into the arena at a slow phase. As the tower kills more and more enemies, the player can add more towers, upgrade the existing ones, and increase the rate of which enemies spawn and the loot that is yielded
 
 ## 🎴 Cards
 
