@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d79174e9c975d45ae3a2875ddcc936, type: 3}
+  m_Name: goblin(villager)
+  m_EditorClassIdentifier: 
+  name: Goblin (villager)
+  rarity: 0
+  artwork: {fileID: 21300000, guid: b71adea03c864fb41a924a99e50ad133, type: 3}
+  mobPrefab: {fileID: 1541474421799021720, guid: 390e1816e2d09c34d884bbfb2b38d488, type: 3}
+  cost: 2

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a902301f029b646a32cbb477cf4772, type: 3}
+  m_Name: shatter_card
+  m_EditorClassIdentifier: 
+  cardName: Shattering Rocks
+  description: Rocks now shatter on impact, dealing damage in an area
+  relation: Stone Slinger
+  artwork: {fileID: 21300000, guid: efffff853c3825442a2a2a8345b3a3f8, type: 3}
+  rarity: 2
+  maxLevel: 1
+  bulletPreviewPrefab: {fileID: 6922930690231664993, guid: cf9bbac236d81f648b0625a55f803ef5, type: 3}
+  bulletPrefab: {fileID: 6922930690231664993, guid: f0306dd8e99743748af7a655bf786df3, type: 3}

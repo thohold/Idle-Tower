@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f1bf25f6975984ebaa7d91a0e9d963, type: 3}
+  m_Name: poison(poison_dart)
+  m_EditorClassIdentifier: 
+  duration: 5
+  maxStacks: 3
+  refreshDurationOnReapply: 1
+  stackOnReapply: 1
+  tickInterval: 1
+  damage: 1
+  element: 4
+  tickEffect: {fileID: 5904319475624871654, guid: bea02b533d253a44a937890c43b06c3d, type: 3}

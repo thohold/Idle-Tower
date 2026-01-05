@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a902301f029b646a32cbb477cf4772, type: 3}
+  m_Name: spikedjavelins_card
+  m_EditorClassIdentifier: 
+  cardName: Spiked Javelins
+  description: Javelins now apply bleed to enemies
+  relation: Javelin Thrower
+  artwork: {fileID: 21300000, guid: 45640d6a7a94451479053850d5ecd6e3, type: 3}
+  rarity: 2
+  maxLevel: 1
+  bulletPreviewPrefab: {fileID: 6084971580913651440, guid: 22ca628fa5fcd8d40897b0540b2a8317, type: 3}
+  bulletPrefab: {fileID: 1402976682915189814, guid: 1bc82911997a3914aaaf4c930445b8a5, type: 3}
