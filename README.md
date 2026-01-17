@@ -12,7 +12,7 @@ My idea was to make a idle game, but one that is more interactive with smooth, s
 This is the core concept behind unlocking new towers and upgrades. As the player kills more and more enemies, they have a chance to drop cards. These cards can be upgrades, new towers, new enemy types. Once a player has unlocked a card they are able to use it to increase the rate at which they are gathering money.
 
 
-![Cards](README_Images/cards.png)
+![Cards](README_Images/cardsv2.png)
 
 Card are split up into the classic RPG rarity system:
 - Common
@@ -28,7 +28,7 @@ The chance of each respective rarity dropping are increasingly small. This adds 
 
 ## 🏹 Towers
 
-![Towers](README_Images/towers.png)
+![Towers](README_Images/towersv2.png)
 
 This is the players way to kill enemies that spawn into the stage. All towers have their own respective stats, xp, and level. Once a tower levels up, you get a deck of 3 random upgrade cards you can choose from from the available cards that the player has unlocked. This adds another layer of randomness to the game.
 Towers have different behaviors. Some target nearby enemies, some deploy traps, but they all have common stats making the upgrade system work without needing to implement new cards for every tower. 
