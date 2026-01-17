@@ -18,15 +18,18 @@ public class StructureCardUi : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.coins < card.price)
+        if (card != null)
         {
-            cardButton.interactable = false;
-            priceText.color = Color.red;
-        }
-        else
-        {
-            cardButton.interactable = true;
-            priceText.color = Color.yellow;
+            if (GameManager.Instance.coins < card.price)
+            {
+                cardButton.interactable = false;
+                priceText.color = Color.red;
+            }
+            else
+            {
+                cardButton.interactable = true;
+                priceText.color = Color.yellow;
+            }
         }
     }
 

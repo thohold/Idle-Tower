@@ -8,12 +8,10 @@ using System.Linq;
 [System.Serializable]
 public class CardUI
 {
-    public Image cardImage;
+    public Image artwork;
     public Button button;
-    public TMP_Text cardName;
-    public TMP_Text cardDesc;
     public TMP_Text cardLevel;
-    public TMP_Text cardRelation;
+
 }
 
 public class StructureUpgradeUI : MonoBehaviour
@@ -93,18 +91,13 @@ public class StructureUpgradeUI : MonoBehaviour
     {
         if (card != null)
         {
-        cardPreview.cardImage.sprite = card.artwork;
-        cardPreview.cardName.text = card.cardName;
-        cardPreview.cardDesc.text = card.description;
-        cardPreview.cardRelation.text = card.relation;
+        cardPreview.artwork.sprite = card.artwork;
         cardPreview.cardLevel.text = (structure.GetCardLevel(card) + 1).ToString();
         cardPreview.button.interactable = true;
         }
         else
         {
-        cardPreview.cardImage.sprite = emptyCardSprite;
-        cardPreview.cardName.text = "";
-        cardPreview.cardDesc.text = "";
+        cardPreview.artwork.sprite = emptyCardSprite;
         cardPreview.cardLevel.text = "";
         cardPreview.button.interactable = false;
         }

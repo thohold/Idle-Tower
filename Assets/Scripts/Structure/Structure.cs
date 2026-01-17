@@ -6,13 +6,13 @@ public enum StructureType {
     Vacus,
     Portal
 }
+
 public class Structure : MonoBehaviour
 {
     
     [Header("Info")]
-    [field: SerializeField] public string Name   { get;  set; }
-    [field: SerializeField] public string Description   { get;  set; }
-    [field: SerializeField] public Sprite CardSprite   { get;  set; }
+
+    [field: SerializeField] public Sprite Artwork  { get;  set; }
     [field: SerializeField] public StructureType Type   { get;  set; }
 
 
@@ -29,9 +29,27 @@ public class Structure : MonoBehaviour
     [Header("Structure Components")]
     [field: SerializeField] public Canon canon { get;  set; }
     [field: SerializeField] public Portal portal { get; set;}
-
+    public Dictionary<StructurePartSlot, StructureComponentSlot> components = new Dictionary<StructurePartSlot, StructureComponentSlot>();
     
+    
+    public void Awake()
+    {
+        components.Clear();
 
+        var slots = GetComponentsInChildren<StructureComponentSlot>();
+
+        foreach (var slot in slots)
+        {
+            if (!components.ContainsKey(slot.slot))
+            {
+                components.Add(slot.slot, slot);
+            }
+            else
+            {
+                Debug.LogWarning("Duplicate slot components are not allowed!");
+            }
+        }
+    }
     public bool HasMaxLevel(UpgradeCard card)
     {
         return cardLevels.ContainsKey(card) && cardLevels[card] >= card.maxLevel;
@@ -57,7 +75,24 @@ public class Structure : MonoBehaviour
             cardLevels[card]++;
             Level++;
         if (HasMaxLevel(card)) allowedCards.Remove(card);
-        card.ApplyUpgrade(this, cardLevels[card]);
+        card.Apply(this, cardLevels[card]);
+        if (canon != null) canon.Reset();
+    }
+
+    public void ChangeMaterial(Material material)
+    {
+        Renderer rend = gameObject.GetComponent<Renderer>();
+        Material[] mats = rend.materials;
+        for (int i = 0; i < mats.Length; i++)
+            mats[i] = material;
+
+        rend.materials = mats;
+
+        foreach (var c in components)
+        {
+            StructureComponentSlot component = c.Value;
+            component.ChangeMaterial(material);
+        }
     }
 
 }

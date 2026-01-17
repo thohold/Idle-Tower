@@ -2,29 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum CardType {
-    Upgrade,
-    Structure
-}
+
 public class UnlockUi : MonoBehaviour
 {
-    private CardType currentUnlock;
     [SerializeField] private Image glow;
     [SerializeField] private CardUI cardPreview;
 
-    private UpgradeCard currentUpgradeCard;
+    private Card currentCard;
 
 
 
-    public void EnterUnlockWindow(UpgradeCard card)
+    public void EnterUnlockWindow(Card card)
     {
         Time.timeScale = 0;
-        currentUpgradeCard = card;
-        cardPreview.cardImage.sprite = card.artwork;
-        cardPreview.cardName.text = card.cardName;
-        cardPreview.cardDesc.text = card.description;
-        cardPreview.cardRelation.text = card.relation;
-        cardPreview.cardLevel.text = card.maxLevel.ToString();
+        cardPreview.artwork.sprite = card.artwork;
         cardPreview.button.interactable = true;
         switch (card.rarity)
         {
@@ -44,18 +35,14 @@ public class UnlockUi : MonoBehaviour
                 glow.color = Color.yellow;
                 break;
         }
+
+        if (card is UpgradeCard uCard) GameManager.Instance.unlockedUpgradeCards.Add(uCard);
+        if (card is MobCard mCard) GameManager.Instance.unlockedMobCards.Add(mCard);
+        if (card is StructureCard sCard) GameManager.Instance.unlockedStructureCards.Add(sCard);
     }
 
     public void Confirm()
     {
-        switch (currentUnlock)
-        {
-            case CardType.Upgrade:
-                GameManager.Instance.unlockedUpgradeCards.Add(currentUpgradeCard);
-                break;
-        }
-
-        currentUpgradeCard = null;
         Time.timeScale = 1;
         gameObject.SetActive(false);
     }

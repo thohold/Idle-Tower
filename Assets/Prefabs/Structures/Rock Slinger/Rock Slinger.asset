@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54954bd3372f86c46bd1f375a2ed7073, type: 3}
+  m_Name: Rock Slinger
+  m_EditorClassIdentifier: 
+  artwork: {fileID: 21300000, guid: 26318f7fa607d624d94a26203c1b1ba4, type: 3}
+  rarity: 0
+  price: 200
+  prefab: {fileID: 2976834337686593641, guid: 590d328729d6abd46811368136a02d7a, type: 3}
+  preview: {fileID: 1464176443146381196, guid: a9cba28f2b0ab2643bcf2f6e06fe8158, type: 3}

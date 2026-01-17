@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62b431722f4851418333038fb9cc994, type: 3}
+  m_Name: burst_card(stone_slinger)
+  m_EditorClassIdentifier: 
+  artwork: {fileID: 21300000, guid: e41d0f7ff249c2145b99ad08ad8e19f4, type: 3}
+  rarity: 1
+  partReplacements:
+  - slot: 2
+    part: {fileID: 7333466516011663147, guid: 40e7423af7bbc16418a09b0642c3f389, type: 3}
+    mat: {fileID: 0}
+  - slot: 2
+    part: {fileID: 8373869748848521253, guid: 83ec585daf04de647912b4f6e02ce64a, type: 3}
+    mat: {fileID: 0}
+  relation: Stone Slinger
+  maxLevel: 2
+  amount: 1

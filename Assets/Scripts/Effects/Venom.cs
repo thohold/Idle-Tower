@@ -20,6 +20,11 @@ public class Venom : EffectSO
         Instantiate(tickEffect, instance.owner.transform.position, Quaternion.identity);
     }
 
+    public override void OnStack(EffectInstance instance)
+    {
+        
+    }
+
 
     public override void OnExit(EffectInstance instance)
     {
@@ -30,7 +35,7 @@ public class Venom : EffectSO
     {
         GameObject aoe = Instantiate(deathAoe, instance.owner.spawnLoc.position, Quaternion.identity);;
         AoE aoeScript = aoe.GetComponent<AoE>();
-        aoeScript.effectDurationMultiplier = instance.durationMultiplier;
-        aoeScript.effectStrengthMultiplier = instance.strengthMultiplier;
+        aoeScript.EffectDurationMultiplier = instance.durationMultiplier;
+        aoeScript.EffectStrengthMultiplier = instance.strengthMultiplier;
     }
 }

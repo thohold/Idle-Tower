@@ -4,7 +4,8 @@ using UnityEngine;
 public class EffectHandler : MonoBehaviour
 {
     private Enemy owner;
-    private readonly List<EffectInstance> activeEffects = new();
+    public readonly List<EffectInstance> activeEffects = new();
+    public bool dirty {get; set;}
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class EffectHandler : MonoBehaviour
             {
                 effect.definition.OnExit(effect);
                 activeEffects.RemoveAt(i);
+                dirty = true;
             }
         }
     }
@@ -35,11 +37,14 @@ public class EffectHandler : MonoBehaviour
             if (effect.definition == effectSO)
             {
                 effect.Refresh();
+                effect.definition.OnStack(effect);
+                dirty = true;
                 return;
             }
         }
 
         activeEffects.Add(new EffectInstance(effectSO, owner, strength, durationAdd, size));
+        dirty = true;
     }
 
     public void OnOwnerDeath()

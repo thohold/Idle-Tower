@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int xp;
     public List<Structure> structures = new List<Structure>();
     [field: SerializeField] public List<UpgradeCard> unlockedUpgradeCards {get; set;}
-    [field: SerializeField] public List<UpgradeCard> unlockedStructureCards {get; set;}
+    [field: SerializeField] public List<StructureCard> unlockedStructureCards {get; set;}
     [field: SerializeField] public List<MobCard> unlockedMobCards {get; set;}
 
 

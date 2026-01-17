@@ -27,7 +27,7 @@ public class TowerStatUi : MonoBehaviour
     void Update()
     {
         structure = GameManager.Instance.currentSelectedStructure;
-        canon = structure.canon;
+        if (structure != null) canon = structure.canon;
 
         if (canon != null)
         {

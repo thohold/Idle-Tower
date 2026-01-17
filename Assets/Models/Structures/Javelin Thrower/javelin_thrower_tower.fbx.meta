@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: javelin_thrower
-    second: {fileID: 2100000, guid: 956da5018fa9c8545b35151cf26c0e58, type: 2}
+      name: javelin_thrower.006
+    second: {fileID: 2100000, guid: c6c91096bad2b5e4cadfeed049f7ac18, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

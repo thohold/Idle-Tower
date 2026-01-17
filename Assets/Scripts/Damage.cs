@@ -6,7 +6,8 @@ public enum Element {
     Earth,
     Poison,
     Holy,
-    Ice
+    Ice,
+    Arcane
 }
 
 [System.Serializable]

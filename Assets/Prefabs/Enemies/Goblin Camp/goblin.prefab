@@ -63,7 +63,23 @@ MonoBehaviour:
   baseMovementSpeed: 2.7
   movementSpeedMultiplier: 1
   <coins>k__BackingField: 3
+  <LootMultiplier>k__BackingField: 0
   <xp>k__BackingField: 10
+  <resistances>k__BackingField:
+  - element: 0
+    resistance: 1
+  - element: 1
+    resistance: 1
+  - element: 2
+    resistance: 1
+  - element: 3
+    resistance: 1
+  - element: 4
+    resistance: 1
+  - element: 5
+    resistance: 1
+  - element: 6
+    resistance: 0.6
   <spawnLoc>k__BackingField: {fileID: 6060088978644366051}
   deathParticles: {fileID: 413068267034445271, guid: d92eb2d8cf644be478139bebdd87c544, type: 3}
   damageText: {fileID: 7036518982726229077, guid: b52597d0e138106419144924dd21f83d, type: 3}

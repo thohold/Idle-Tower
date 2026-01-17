@@ -21,6 +21,11 @@ public class Stun : EffectSO
 
     }
 
+    public override void OnStack(EffectInstance instance)
+    {
+        
+    }
+
 
     public override void OnExit(EffectInstance instance)
     {

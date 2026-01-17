@@ -21,8 +21,9 @@ public class Projectile : MonoBehaviour
     [field: SerializeField] public GameObject Aoe   { get;  set; }
     [field: SerializeField] public Damage Damage   { get;  set; }
     [field: SerializeField] public float Speed   { get;  set; }
-    [field: SerializeField] public float EffectStrength   { get;  set; }
+    [field: SerializeField] public float EffectStrengthMultiplier   { get;  set; }
     [field: SerializeField] public float EffectDurationMultiplier   { get;  set; }
+    [field: SerializeField] public float Lifetime {get; set;}
     [field: SerializeField] public float Size {get; set;}
     [field: SerializeField] public float CritChance {get; set;}
     [field: SerializeField] public float CritDamage {get; set;}
@@ -31,7 +32,6 @@ public class Projectile : MonoBehaviour
 
     [field: SerializeField] private AudioClip hitSound;
 
-    [SerializeField] private float lifetime;
     [SerializeField] private Rigidbody rb;
     private Vector3 direction;
     private GameObject target;
@@ -56,6 +56,10 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         MoveHandler();
+
+        Lifetime -= Time.deltaTime;
+
+        if (Lifetime <= 0) Destroy(this.gameObject);
     }
 
     public void SetDirection(Vector3 dir)
@@ -122,7 +126,7 @@ public class Projectile : MonoBehaviour
     {
         foreach (EffectSO effectSO in Effects)
         {
-            effectHandler.AddEffect(effectSO, EffectStrength, EffectDurationMultiplier, Size);
+            effectHandler.AddEffect(effectSO, EffectStrengthMultiplier, EffectDurationMultiplier, Size);
         }
 
     }
@@ -146,16 +150,27 @@ public class Projectile : MonoBehaviour
                 }
                 enemy.TakeDamage(damage);
             }
-            else if (Reaction == HitReaction.Aoe) Instantiate(Aoe, transform.position, transform.rotation);
-            Instantiate(impactParticles, transform.position, Quaternion.identity);
+            else if (Reaction == HitReaction.Aoe) 
+            {
+                GameObject aoeObject = Instantiate(Aoe, transform.position, transform.rotation);
+                AoE aoe = aoeObject.GetComponent<AoE>();
+                aoe.InheritProjectile(this);
+            }
+            if (impactParticles != null) Instantiate(impactParticles, transform.position, Quaternion.identity);
             SoundManager.Instance.PlayOneShot(hitSound, transform.position);
             Destroy(this.gameObject);
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            Instantiate(impactParticles, transform.position, Quaternion.identity);
+            if (impactParticles != null) Instantiate(impactParticles, transform.position, Quaternion.identity);
             SoundManager.Instance.PlayOneShot(hitSound, transform.position);
-            if (Reaction == HitReaction.Aoe) Instantiate(Aoe, transform.position, transform.rotation);
+            if (Reaction == HitReaction.Aoe) 
+            {
+
+                GameObject aoeObject = Instantiate(Aoe, transform.position, transform.rotation);
+                AoE aoe = aoeObject.GetComponent<AoE>();
+                aoe.InheritProjectile(this);
+            }
             Destroy(this.gameObject); 
 
         }

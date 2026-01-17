@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class EffectInstance
 {
@@ -15,6 +17,8 @@ public class EffectInstance
     public float durationMultiplier = 1;
     public float size;
 
+    public Dictionary<Element, float> resistanceModifiers {get; set;}
+
     public EffectInstance(EffectSO definition, Enemy owner, float strength, float durationMultiplier, float size)
     {
         this.definition = definition;
@@ -22,11 +26,21 @@ public class EffectInstance
         this.strengthMultiplier = strength;
         
         this.durationMultiplier = durationMultiplier;
+        Debug.Log(definition);
         duration = definition.duration;
         remainingDuration = duration;
         stacks = 1;
-
+        
+        this.resistanceModifiers = new Dictionary<Element,float>();
+        if (definition.resistanceModifiers != null)
+        {
+        foreach (ElementResistance modifier in definition.resistanceModifiers)
+        {
+            this.resistanceModifiers[modifier.element] = modifier.resistance;
+        }
         definition.OnEnter(this);
+        }
+        
     }
 
     public void Update(float dt)

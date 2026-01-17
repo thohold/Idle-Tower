@@ -9,12 +9,16 @@ public class MobCardUi : MonoBehaviour
     public TMP_Text costText;
     public Button selectButton;
     public PortalUi portalUi;
+    public Sprite emptyCardSprite;
     
 
     void Start()
     {
+        if (mob != null)
+        {
         cardPreview.sprite = mob.artwork;
         costText.text = mob.cost.ToString();
+        }
     }
     public void Select()
     {

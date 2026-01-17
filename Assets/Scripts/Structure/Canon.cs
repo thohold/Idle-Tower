@@ -19,6 +19,9 @@ public class Canon : MonoBehaviour
     [SerializeField] private List<GameObject> barrels;
     private Quaternion baseRotation;
 
+    [SerializeField] private bool rotateYAxis;
+    
+
     [SerializeField] private AimType aimType;
 
     [Header("Stats")]
@@ -73,13 +76,7 @@ public class Canon : MonoBehaviour
         collider.radius = range;
         baseRotation = transform.localRotation;
         baseSize = bulletConfig.transform.localScale;
-
-        Transform barrel = transform.GetChild(0);
-        foreach(Transform child in barrel)
-        {
-            barrels.Add(child.gameObject);
-        }
-                
+        Reset();    
     }
 
     // Update is called once per frame
@@ -89,12 +86,10 @@ public class Canon : MonoBehaviour
 
         if (targets.Count > 0)
         {
-        GameObject mainTarget = targets[0]; 
+            GameObject mainTarget = targets[0]; 
 
-        lookDirection = mainTarget.transform.position - transform.position;
-        Vector3 flatDir = new Vector3(lookDirection.x, 0f, lookDirection.z);
-        float yaw = (Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg) -180;
-        transform.localRotation = Quaternion.Euler(0f, 0f, yaw);
+            RotateCanon(mainTarget);
+
         }
 
         if (currentMagazine <= 0) 
@@ -117,7 +112,6 @@ public class Canon : MonoBehaviour
             Shoot();
         }
 
-        UpdateStats();
 
     }
 
@@ -150,7 +144,7 @@ public class Canon : MonoBehaviour
             .ToList();
     }
 
-    public void UpdateStats()
+    public void Reset()
     {
         atkSpeed = baseAtkSpeed * AtkSpeed;
         range = baseRange * Range;
@@ -158,7 +152,24 @@ public class Canon : MonoBehaviour
         speed = baseSpeed * Speed;
         size = baseSize * Size;
 
+        UpdateAmmoVisuals();
+        UpdateBarrels();
+
     }
+
+    public void UpdateBarrels()
+    {
+        barrels.Clear();
+        if (Structure.components.TryGetValue(StructurePartSlot.Barrel, out var b))
+            {
+                Transform barrel = b.currentInstance.transform;
+            foreach(Transform child in barrel)
+                {
+                    barrels.Add(child.gameObject);
+                }
+            }
+    }
+    
 
     public void UpdateAmmoVisuals()
     {
@@ -169,19 +180,6 @@ public class Canon : MonoBehaviour
 
     }
 
-    public void UpdateComponent(GameObject prefab, int index)
-    {
-        Transform old = transform.GetChild(index);
-        Destroy(old.gameObject);
-        GameObject newO = Instantiate(prefab, transform);
-        newO.transform.SetSiblingIndex(index);
-        Transform barrel = transform.GetChild(0);
-        barrels.Clear();
-        foreach(Transform child in barrel)
-        {
-            barrels.Add(child.gameObject);
-        }
-    }
 
     private void Shoot()
     {
@@ -205,7 +203,7 @@ public class Canon : MonoBehaviour
                 Projectile projectile = p.GetComponent<Projectile>();
                 projectile.transform.localScale = size;
                 projectile.Speed = speed;
-                projectile.EffectStrength = EffectStrengthMultiplier;
+                projectile.EffectStrengthMultiplier = EffectStrengthMultiplier;
                 projectile.EffectDurationMultiplier = EffectDurationMultiplier;
                 projectile.Size = Size;
                 var dmg = projectile.Damage;
@@ -229,5 +227,32 @@ public class Canon : MonoBehaviour
     private void Reload()
     {
         currentMagazine = magazineSize;
+    }
+
+    private void RotateCanon(GameObject mainTarget)
+    {
+        lookDirection = mainTarget.transform.position - transform.position;
+
+        // --- Yaw (Z axis) ---
+        Vector3 flatDir = new Vector3(lookDirection.x, 0f, lookDirection.z);
+        float yaw = (Mathf.Atan2(flatDir.x, flatDir.z) * Mathf.Rad2Deg) - 180f;
+
+        // --- Pitch (X axis) ---
+        float pitch = 0f;
+        if (rotateYAxis) // rename this later to rotatePitch maybe
+        {
+            float horizontalDist = new Vector2(flatDir.x, flatDir.z).magnitude;
+            pitch = Mathf.Atan2(lookDirection.y, horizontalDist) * Mathf.Rad2Deg;
+
+            // Optional clamp so it doesn't go demon-mode
+            // pitch = Mathf.Clamp(pitch, -45f, 45f);
+        }
+
+        // Compose: yaw first, then pitch
+        Quaternion yawQ = Quaternion.AngleAxis(yaw, Vector3.forward); // Z
+        Quaternion pitchQ = Quaternion.AngleAxis(pitch, Vector3.right); // X (minus is common)
+
+        transform.localRotation = yawQ * pitchQ;
+
     }
 }

@@ -4891,9 +4891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e998c51de29813e41a4c3b52e74710fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  upgradeCard: {fileID: 11400000, guid: 933620a11035c1146b66d6b04fd21b6b, type: 2}
-  mobCard: {fileID: 0}
+  card: {fileID: 11400000, guid: 933620a11035c1146b66d6b04fd21b6b, type: 2}
 --- !u!1 &7628620685802594512
 GameObject:
   m_ObjectHideFlags: 0

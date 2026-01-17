@@ -7,11 +7,17 @@ public class AoE : MonoBehaviour
     [SerializeField] private int times;
     [SerializeField] private float interval = 1f;
     private float tickTimer;
-    [SerializeField] private Damage damage;
     [SerializeField] private List<EffectSO> effects;
-    [field:SerializeField] public float effectStrengthMultiplier {get; set;}
-    [field:SerializeField] public float effectDurationMultiplier {get; set;}
-    public float size {get; set;}
+
+    [Header("Stats")]
+
+    [field: SerializeField] public Damage Damage   { get;  set; }
+    [field: SerializeField] public float Lifetime {get; set;}
+    [field:SerializeField] public float EffectStrengthMultiplier {get; set;}
+    [field:SerializeField] public float EffectDurationMultiplier {get; set;}
+    [field: SerializeField] public float Size {get; set;}
+    [field: SerializeField] public float CritChance {get; set;}
+    [field: SerializeField] public float CritDamage {get; set;}
     [SerializeField] private GameObject particlesOnTrigger;
     [SerializeField] private LayerMask enemyMask;
     private HashSet<Enemy> enemiesInside = new();
@@ -20,6 +26,8 @@ public class AoE : MonoBehaviour
 
     void Start()
     {
+        transform.localScale *= Size;
+
         StartCoroutine(DelayedFirstTrigger());
     }
     void Update()
@@ -37,15 +45,16 @@ public class AoE : MonoBehaviour
     {
         foreach (Enemy enemy in enemiesInside)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(Damage);
 
             var ef = enemy.GetComponent<EffectHandler>();
             if (ef != null)
                 foreach (var effect in effects)
-                    ef.AddEffect(effect, effectStrengthMultiplier, effectDurationMultiplier, size);
+                    ef.AddEffect(effect, EffectStrengthMultiplier, EffectDurationMultiplier, Size);
         }
 
-        Instantiate(particlesOnTrigger, transform.position, Quaternion.identity);
+        GameObject particles = Instantiate(particlesOnTrigger, transform.position, Quaternion.identity);
+        particles.transform.localScale *= Size;
 
         times--;
         if (times <= 0) Destroy(gameObject);
@@ -69,6 +78,16 @@ public class AoE : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
             enemiesInside.Remove(enemy);
+    }
+
+    public void InheritProjectile(Projectile projectile)
+    {
+        Damage = projectile.Damage;
+        Size = projectile.Size;
+        EffectDurationMultiplier = projectile.EffectDurationMultiplier;
+        EffectStrengthMultiplier = projectile.EffectStrengthMultiplier;
+        CritChance = projectile.CritChance;
+        CritDamage = projectile.CritDamage;
     }
 
 }

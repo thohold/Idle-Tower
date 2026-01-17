@@ -5014,5 +5014,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e998c51de29813e41a4c3b52e74710fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  upgradeCard: {fileID: 11400000, guid: 9cbac20012f848e4eb937307d77a2851, type: 2}
+  card: {fileID: 11400000, guid: 9cbac20012f848e4eb937307d77a2851, type: 2}

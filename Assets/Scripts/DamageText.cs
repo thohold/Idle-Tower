@@ -9,10 +9,10 @@ public class DamageText : MonoBehaviour
 
     private float timer;
 
-    public void Init(Damage damage)
+    public void Init(int amount, bool critical, Element element)
     {
-        text.text = damage.amount.ToString() + (damage.critical ? "!" : "");
-        text.color = GetColor(damage.element);
+        text.text = amount.ToString() + (critical ? "!" : "");
+        text.color = GetColor(element);
         timer = lifetime;
     }
 
@@ -34,6 +34,7 @@ public class DamageText : MonoBehaviour
             Element.Poison => Color.green,
             Element.Fire   => new Color(1f, 0.4f, 0f),
             Element.Ice    => Color.cyan,
+            Element.Arcane => new Color(1f, 0.407f, 0.74f),
             _                    => Color.white
         };
     }

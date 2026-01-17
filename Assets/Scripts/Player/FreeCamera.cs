@@ -206,13 +206,10 @@ public class FreeCamera : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Card"))
             {
-                CollectibleCard card = hit.collider.gameObject.GetComponent<CollectibleCard>();
-                if (card.type == CardType.Upgrade)
-                {
-                    unlockTab.SetActive(true);
-                    unlockUi.EnterUnlockWindow(card.upgradeCard);
-                    Destroy(hit.collider.gameObject);
-                }
+                CollectibleCard collectible = hit.collider.gameObject.GetComponent<CollectibleCard>();
+                unlockTab.SetActive(true);
+                unlockUi.EnterUnlockWindow(collectible.card);
+                Destroy(hit.collider.gameObject);
                 
             }
         } else

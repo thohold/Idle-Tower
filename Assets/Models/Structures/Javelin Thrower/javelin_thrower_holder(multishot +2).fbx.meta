@@ -3,7 +3,12 @@ guid: 00eea3767d2e97b4ba48086f35cc3d73
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: javelin_thrower.004
+    second: {fileID: 2100000, guid: c6c91096bad2b5e4cadfeed049f7ac18, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

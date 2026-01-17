@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a959d7e8ce91a4ca6d361b6aa8aaf0, type: 3}
   m_Name: atkspeed_card(javelin_thrower)
   m_EditorClassIdentifier: 
-  cardName: Attack Speed+
+  name: 
   description: Increases the attack speed of your structure
-  relation: Javelin Thrower
-  artwork: {fileID: 21300000, guid: d5c6d4c047bf5234f90c5d1c0de512cb, type: 3}
+  artwork: {fileID: 21300000, guid: fb3ca4e3a3790cb4584a223e7a81b659, type: 3}
   rarity: 0
+  relation: Javelin Thrower
   maxLevel: 4
   multiplier: 0.8

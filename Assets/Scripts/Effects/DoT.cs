@@ -19,6 +19,11 @@ public class DoT : EffectSO
         Instantiate(tickEffect, instance.owner.spawnLoc.position, Quaternion.identity);
     }
 
+    public override void OnStack(EffectInstance instance)
+    {
+        
+    }
+
 
     public override void OnExit(EffectInstance instance)
     {

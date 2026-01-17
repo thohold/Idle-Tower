@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a902301f029b646a32cbb477cf4772, type: 3}
+  m_Name: venomdarts_card
+  m_EditorClassIdentifier: 
+  artwork: {fileID: 21300000, guid: 30ed55f621ffcfb41a168486da4d12fe, type: 3}
+  rarity: 2
+  partReplacements: []
+  baseMatReplacement: {fileID: 2100000, guid: 787659a3c49b53c4299b0b4811860a2d, type: 2}
+  relation: Goblin Totems
+  maxLevel: 1
+  bulletPreviewPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 3200427482574903594, guid: 8a84716d89032a3468cdf35035ade034, type: 3}

@@ -51,10 +51,8 @@ public class TowerUi : MonoBehaviour
                     portalTab.SetActive(false);
                     xpTab.SetActive(true);
                     shopTab.SetActive(false);
-                    nameText.text = structure.Name;
-                    descText.text = structure.Description;
                     levelText.text = structure.Level.ToString();
-                    cardPreview.sprite = structure.CardSprite;
+                    cardPreview.sprite = structure.Artwork;
                     break;
                 case StructureType.Portal:
                     xpTab.SetActive(true);
